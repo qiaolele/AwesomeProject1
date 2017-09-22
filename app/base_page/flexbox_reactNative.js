@@ -1,6 +1,7 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
+ * @info: flexbox布局盒子模型
  */
 'use strict';
 import React, { Component } from 'react';
@@ -14,7 +15,7 @@ class Box extends Component{
     render(){
         return (
             <View style={[BoxStyles.box,BoxStyles[this.props.width],BoxStyles[this.props.height]]}>
-                <View  style={[BoxStyles.top,BoxStyles.height50,BoxStyles[this.props.classBg]]}><Text>top</Text></View>
+                <View style={[BoxStyles.top,BoxStyles.height50,BoxStyles[this.props.classBg]]}><Text>top</Text></View>
                 <View style={[BoxStyles[this.props.childName]]}>
                     <View style={[BoxStyles.left,BoxStyles[this.props.classBg]]}><Text>left</Text></View>
                     {this.props.children}
