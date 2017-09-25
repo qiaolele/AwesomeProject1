@@ -2,7 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
- * @info: flexbox布局demo
+ * @info: flexbox布局demo——旅游导航
  */
 
 import React, { Component } from 'react';

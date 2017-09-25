@@ -2,7 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
- * @info: TextInput组件——文本输入框
+ * @info: TextInput组件——文本输入框——搜索框
  */
 
 import React, { Component } from 'react';
