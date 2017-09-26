@@ -6,7 +6,7 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Text,Image,ListView,ActivityIndicator} from 'react-native';
+import { StyleSheet, View, Text,Image,ListView,ActivityIndicator,TouchableOpacity} from 'react-native';
 
 let REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
@@ -36,19 +36,24 @@ class ListViewFetchCom extends Component{
             </View>
         )
     }
+    alertImage(movie){
+        alert(movie.title);
+    }
     // 加载到数据之后页面渲染结构
     renderMovie(movie) {
         return (
-            <View style={styles.container}>
-                <Image
-                    source={{uri: movie.posters.thumbnail}}
-                    style={styles.thumbnail}
-                />
-                <View style={styles.rightContainer}>
-                    <Text style={styles.title} onPress={this.aa}>标题：{movie.title}</Text>
-                    <Text style={styles.year}>{movie.year}年</Text>
+            <TouchableOpacity onPress={this.alertImage.bind(this,movie)}>
+                <View style={styles.container}>
+                    <Image
+                        source={{uri: movie.posters.thumbnail}}
+                        style={styles.thumbnail}
+                    />
+                    <View style={styles.rightContainer}>
+                        <Text style={styles.title}>标题：{movie.title}</Text>
+                        <Text style={styles.year}>{movie.year}年</Text>
+                    </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 
@@ -81,7 +86,7 @@ class ListViewFetchCom extends Component{
         return (
             <ListView
                 dataSource = {this.state.dataSource}
-                renderRow = {this.renderMovie}
+                renderRow = {this.renderMovie.bind(this)}
                 style={styles.listView}
             />
         )
