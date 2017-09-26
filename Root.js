@@ -13,6 +13,11 @@ import Image from './app/base_page/ImageRN';
 import Picker from './app/base_page/pickerRN';
 import ProgressBar from './app/base_page/progressBarRN';
 import DrawerLayoutAndroid from './app/base_page/drawerLayoutAndroidRN';
+import ViewPageAndroid from './app/base_page/viewPagerAndroidRN';
+
+import FetchDateRN from './app/base_page/fetchDateRN';
+import ListViewFetchRN from './app/base_page/listViewFetchRN';
+import FlatListRN from './app/base_page/flatListRN';
 
 // const Header = require('app/base_page/WNnews'); es5的写法
 
@@ -42,11 +47,18 @@ export default class Root extends Component {
                 {/*图片组件*/}
                 {/*<Image></Image>*/}
                 {/*下拉列表框组件*/}
-                <Picker></Picker>
+                {/*<Picker></Picker>*/}
                 {/*进度条组件*/}
-                <ProgressBar></ProgressBar>
+                {/*<ProgressBar></ProgressBar>*/}
                 {/*抽屉导航器组件*/}
-                <DrawerLayoutAndroid></DrawerLayoutAndroid>
+                {/*<DrawerLayoutAndroid></DrawerLayoutAndroid>*/}
+
+                {/*<ViewPageAndroid></ViewPageAndroid>*/}
+                {/*动态加载数据*/}
+                {/*<FetchDateRN></FetchDateRN>*/}
+                {/*flatList组件长列表*/}
+                {/*<FlatListRN></FlatListRN>*/}
+                <ListViewFetchRN></ListViewFetchRN>
             </View>
         );
     }
