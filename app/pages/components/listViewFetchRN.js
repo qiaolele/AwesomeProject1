@@ -2,7 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
- * @info: Fetch组件和—— 获取动态数据——ListView组件
+ * @info: Fetch组件和—— 获取动态数据——ListView组件垂直滚动的数据列表
  */
 
 import React, { Component } from 'react';

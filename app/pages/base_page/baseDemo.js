@@ -5,9 +5,9 @@
  * @info: 基础例子
  */
 
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
 
+import { StyleSheet, View, Text, Image } from 'react-native';
+import React, { Component } from 'react';
 // 子组件——静态props属性
 // props是在父组件中指定，而且一经指定，在被指定的组件的生命周期中则不再改变。 对于需要改变的数据，我们需要使用state。
 class Greeting extends Component{
@@ -132,4 +132,4 @@ const styles = StyleSheet.create({
 
 
 //将AwesomeProject组件导出
-export default AwesomeProject
+// export default AwesomeProject

@@ -72,7 +72,7 @@ class MyImageCom extends Component{
                            resizeMode ="contain"//contain:图片拉伸  充满空间 cover:等比拉伸 stretch:保持原有大小
                            source={{uri: this.state.imgs[this.state.count]}}
                     />
-                    <Image source={require('../../img/ico01_150127.png')}></Image>
+                    <Image source={require('../../rescourse/img/ico01_150127.png')}></Image>
                 </View>
                 <View style={styles.btns}>
                     <TouchableOpacity onPress={this.goPreview.bind(this)}>

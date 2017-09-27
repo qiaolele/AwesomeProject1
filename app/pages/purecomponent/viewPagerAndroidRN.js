@@ -19,13 +19,13 @@ class ViewPageAndroidCom extends Component{
                     <Text style={styles.fontStyle2}>第一页</Text>
                 </View>
                 <View style={styles.center}>
-                    <Image source={require('../../img/pic2.jpg')}></Image>
+                    <Image source={require('../../rescourse/img/pic2.jpg')}></Image>
                 </View>
                 <View style={styles.center}>
-                    <Image source={require('../../img/pic3.jpg')}></Image>
+                    <Image source={require('../../rescourse/img/pic3.jpg')}></Image>
                 </View>
                 <View style={styles.center}>
-                    <Image source={require('../../img/pic4.jpg')}></Image>
+                    <Image source={require('../../rescourse/img/pic4.jpg')}></Image>
                 </View>
                 <View style={styles.center}>
                     <Text style={styles.fontStyle3}>第五页</Text>
