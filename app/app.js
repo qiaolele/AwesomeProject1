@@ -4,35 +4,35 @@
  * @flow
  * @info: 程序入口
  */
-import {View,StyleSheet} from 'react-native';
+import {View,StyleSheet,Text} from 'react-native';
 import React, {Component} from 'react';
 
 // 基础实例API
-// import BaseDemo from 'pages/base_page/baseDemo';
-// import FlexboxRN from 'pages/base_page/flexbox_reactNative';
-// import TravelNav from 'pages/base_page/travelNav';
-// import WnNews from 'pages/base_page/WNnews';
+import BaseDemo from './pages/base_page/baseDemo';
+import FlexboxRN from './pages/base_page/flexbox_reactNative';
+import TravelNav from './pages/base_page/travelNav';
+import WnNews from './pages/base_page/WNnews';
 
 // 组件实例
-// import SearchInputFile from 'pages/purecomponent/searchTextInput';
-// import SearchDate from 'pages/base_page/searchDate';
-// import ScrollViewRN from 'pages/purecomponent/scrollViewRN';
-// import Touchable from 'pages/purecomponent/touchableRN';
-// import Image from 'pages/components/ImageRN';
-// import Picker from 'pages/components/pickerRN';
-// import ProgressBar from 'pages/components/progressBarRN';
-// import DrawerLayoutAndroid from 'pages/purecomponent/drawerLayoutAndroidRN';
-// import ViewPageAndroid from 'pages/purecomponent/viewPagerAndroidRN';
+import SearchInputFile from './pages/purecomponent/searchTextInput';
+import SearchDate from './pages/base_page/searchDate';
+import ScrollViewRN from './pages/purecomponent/scrollViewRN';
+import Touchable from './pages/purecomponent/touchableRN';
+import Image from './pages/components/ImageRN';
+import Picker from './pages/components/pickerRN';
+import ProgressBar from './pages/components/progressBarRN';
+import DrawerLayoutAndroid from './pages/purecomponent/drawerLayoutAndroidRN';
+import ViewPageAndroid from './pages/purecomponent/viewPagerAndroidRN';
 
 // 无状态组件实例
-// import FetchDateRN from 'pages/components/fetchDateRN';
-// import ListViewFetchRN from 'pages/components/listViewFetchRN';
-// import FlatListRN from 'pages/components/flatListRN';
-import WebViewRN from 'pages/components/webViewRN';
+import FetchDateRN from './pages/components/fetchDateRN';
+import ListViewFetchRN from './pages/components/listViewFetchRN';
+import FlatListRN from './pages/components/flatListRN';
+import WebViewRN from './pages/components/webViewRN';
 
 
 // 第三方插件
-// import SwiperRN from 'pages/third_plugIn/swiperRN';
+import SwiperRN from './pages/third_plugIn/swiperRN';
 
 // const Header = require('app/base_page/WNnews'); es5的写法
 
@@ -76,11 +76,11 @@ export default class Root extends Component {
                 {/*长列表*/}
                 {/*<ListViewFetchRN></ListViewFetchRN>*/}
 
-                <WebViewRN></WebViewRN>
+                {/*<WebViewRN></WebViewRN>*/}
 
-
+                {/*<View><Text>dfkdfd</Text></View>*/}
                 {/*第三方库——轮播插件*/}
-                {/*<SwiperRN></SwiperRN>*/}
+                <SwiperRN></SwiperRN>
             </View>
         );
     }
