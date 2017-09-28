@@ -111,7 +111,7 @@ class ReactNativeSwiper extends Component{
                     style={styles.wrapper}
                     renderPagination={renderPagination}
                     loop={true}
-                    autoplay
+                    // autoplay
                 >
                     <View style={styles.slide} title={<Text numberOfLines={1}>Aussie tourist dies at Bali hotel</Text>}>
                         <Image style={styles.image} source={require('../../rescourse/img/pic1.jpg')} />

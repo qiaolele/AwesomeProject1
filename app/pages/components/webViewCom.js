@@ -2,7 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
- * @info: webView组件
+ * @info: webView组件——混合模式移动应用
  */
 
 import React, { Component } from 'react';
