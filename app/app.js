@@ -74,13 +74,13 @@ export default class Root extends Component {
                 {/*flatList组件长列表*/}
                 {/*<FlatListRN></FlatListRN>*/}
                 {/*长列表*/}
-                <ListViewFetchRN></ListViewFetchRN>
+                {/*<ListViewFetchRN></ListViewFetchRN>*/}
 
                 {/*<WebViewRN></WebViewRN>*/}
 
                 {/*<View><Text>dfkdfd</Text></View>*/}
                 {/*第三方库——轮播插件*/}
-                {/*<SwiperRN></SwiperRN>*/}
+                <SwiperRN></SwiperRN>
             </View>
         );
     }
