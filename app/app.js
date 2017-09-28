@@ -13,6 +13,9 @@ import FlexboxRN from './pages/base_page/flexboxRN';
 import SearchDate from './pages/base_page/searchDate';
 import TravelNav from './pages/base_page/travelNav';
 import WnNews from './pages/base_page/WNnews';
+import ListViewSimple from './pages/base_page/listViewSimple'
+import ListViewSecondHeader from './pages/base_page/listViewSecondHeader';
+
 
 // 组件实例
 import FetchDateCom from './pages/components/fetchDateCom';
@@ -53,6 +56,9 @@ export default class Root extends Component {
                 {/*<TravelNav></TravelNav>*/}
                 {/*网易新闻Text组件*/}
                 {/*<WnNews></WnNews>*/}
+                {/*<ListViewSimple></ListViewSimple>*/}
+                <ListViewSecondHeader></ListViewSecondHeader>
+
 
 
 
@@ -87,7 +93,7 @@ export default class Root extends Component {
 
 
                 {/*第三方库——轮播插件*/}
-                <SwiperRN></SwiperRN>
+                {/*<SwiperRN></SwiperRN>*/}
             </View>
         );
     }
