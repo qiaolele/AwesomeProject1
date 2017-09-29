@@ -15,6 +15,7 @@ import TravelNav from './pages/base_page/travelNav';
 import WnNews from './pages/base_page/WNnews';
 import ListViewSimple from './pages/base_page/listViewSimple'
 import ListViewSecondHeader from './pages/base_page/listViewSecondHeader';
+import ListViewGride from './pages/base_page/listViewGride';
 
 
 // 组件实例
@@ -44,7 +45,7 @@ export default class Root extends Component {
         return (
             // 一个出口只能导出一个View组件，如果使用flex布局，最大容器一定要设置flex
             // 如果此时只有一个组件，就可以不要外面的View组件容器
-            <View style={{flex:1}}>
+            <View>
                 {/*基础实例API*/}
 
                 {/*<BaseDemo></BaseDemo>*/}
@@ -57,7 +58,10 @@ export default class Root extends Component {
                 {/*网易新闻Text组件*/}
                 {/*<WnNews></WnNews>*/}
                 {/*<ListViewSimple></ListViewSimple>*/}
-                <ListViewSecondHeader></ListViewSecondHeader>
+
+                {/*<ListViewSecondHeader></ListViewSecondHeader>*/}
+                {/*多列的效果*/}
+                <ListViewGride></ListViewGride>
 
 
 
