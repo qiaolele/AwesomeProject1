@@ -113,5 +113,4 @@ const styles = StyleSheet.create({
 });
 
 
-
-module.exports = HomeUI;
+export default HomeUI;

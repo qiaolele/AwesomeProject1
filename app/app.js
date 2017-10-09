@@ -37,6 +37,11 @@ import ViewPageAndroidCom from './pages/purecomponent/viewPagerAndroidCom';
 // 第三方插件
 import SwiperRN from './pages/thirdplugin/swiperRN';
 import TabNavigatorRN from './pages/thirdplugin/tabNavigatorRN';
+import SideMenuRN from './pages/thirdplugin/sideMenuRN';
+
+
+
+import AsyncStorageAPI from './pages/api_demo/asyncStorage';
 
 // const Header = require('app/base_page/WNnews'); es5的写法
 
@@ -62,7 +67,7 @@ export default class Root extends Component {
 
                 {/*<ListViewSecondHeader></ListViewSecondHeader>*/}
                 {/*多列的效果*/}
-                <ListViewGride></ListViewGride>
+                {/*<ListViewGride></ListViewGride>*/}
 
 
 
@@ -101,6 +106,11 @@ export default class Root extends Component {
                 {/*<SwiperRN></SwiperRN>*/}
                 {/*第三方库——Tab导航组件*/}
                 {/*<TabNavigatorRN></TabNavigatorRN>*/}
+                {/*第三方库——侧边栏导航组件*/}
+                {/*<SideMenuRN></SideMenuRN>*/}
+
+                <AsyncStorageAPI></AsyncStorageAPI>
+
             </View>
         );
     }
