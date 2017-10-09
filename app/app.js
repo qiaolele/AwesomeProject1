@@ -36,6 +36,7 @@ import ViewPageAndroidCom from './pages/purecomponent/viewPagerAndroidCom';
 
 // 第三方插件
 import SwiperRN from './pages/thirdplugin/swiperRN';
+import TabNavigatorRN from './pages/thirdplugin/tabNavigatorRN';
 
 // const Header = require('app/base_page/WNnews'); es5的写法
 
@@ -45,7 +46,7 @@ export default class Root extends Component {
         return (
             // 一个出口只能导出一个View组件，如果使用flex布局，最大容器一定要设置flex
             // 如果此时只有一个组件，就可以不要外面的View组件容器
-            <View>
+            <View style={{flex:1}}>
                 {/*基础实例API*/}
 
                 {/*<BaseDemo></BaseDemo>*/}
@@ -96,8 +97,10 @@ export default class Root extends Component {
                 {/*<ViewPageAndroidCom></ViewPageAndroidCom>*/}
 
 
-                {/*第三方库——轮播插件*/}
+                {/*第三方库——轮播组件*/}
                 {/*<SwiperRN></SwiperRN>*/}
+                {/*第三方库——Tab导航组件*/}
+                {/*<TabNavigatorRN></TabNavigatorRN>*/}
             </View>
         );
     }

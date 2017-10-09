@@ -2,7 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
- * @info: react-native-swiper——第三方库轮播插件
+ * @info: react-native-swiper——第三方库轮播组件
  */
 
 import React, { Component } from 'react';

@@ -97,9 +97,9 @@ class ListViewGride extends Component{
 // 定义样式
 const styles = StyleSheet.create({
     list: {
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
     },
     container: {
         borderWidth: 1,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         backgroundColor: '#F5FCFF',
-        margin:5,
+        margin:10,
         alignItems:'center',
     },
     listView: {
@@ -119,12 +119,12 @@ const styles = StyleSheet.create({
         height: 80,
         borderRadius:16,
     },
-    //让rightContainer在父容器中占据Image之外剩下的全部空间。
-    container1: {
-        flex: 1,
-        justifyContent:'center',
-        alignItems:'center',
-    },
+    // //让rightContainer在父容器中占据Image之外剩下的全部空间。
+    // container1: {
+    //     flex: 1,
+    //     justifyContent:'center',
+    //     alignItems:'center',
+    // },
     title: {
         fontSize: 14,
         marginBottom: 8,
