@@ -69,48 +69,15 @@ const Model = [
 ];
 
 
-export default class HomeUI extends Component {
-
-
-
-    _pressButton() {
-        const { navigator } = this.props;
-        if (navigator) {
-            //很熟悉吧，入栈出栈~ 把当前的页面pop掉，这里就返回到了上一个页面:了
-            navigator.pop();
-        }
-    }
-
-
-
-    render() {
-
-
-        return (
-            <List navigator={this.props.navigator} />
-        );
-
-
-    }
-
-
-
-
-
-
-
-
-}
-
-
 class Item extends Component {
-
+    // 定义一个默认属性
     static defaultProps = {
         url: 'https://gss0.bdstatic.com/5eR1dDebRNRTm2_p8IuM_a/res/img/richanglogo168_24.png',
         title: '默认标题',
     };  // 注意这里有分号
+    // 定义默认属性的类型
     static propTypes = {
-        url: React.PropTypes.string.isRequired,
+        url: React.PropTypes.string.isRequired,//如果设置成isRequired的时候父组件传参或者该属性必须有值，否则报错
         title: React.PropTypes.string.isRequired,
     };  // 注意这里有分号
 
@@ -134,13 +101,13 @@ class Item extends Component {
 }
 
 
-class List extends Component {
+export default class List extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            count: 0,
+            count: 0,//用来表示当点击的时候计数
         };
     }
 
@@ -197,44 +164,25 @@ class List extends Component {
 
 
     goGouWu() {
-        //alert('点击了去购物车');
-        const { navigator } = this.props;
-        //为什么这里可以取得 props.navigator?请看上文:
-        //<Component {...route.params} navigator={navigator} />
-        //这里传递了navigator作为props
-        if (navigator) {
-            navigator.push({
-                name: 'GouWu',
-                component: GouWu,
-            })
-        }
+        alert('点击了去购物车');
+
     }
-
-
     press(data) {
         this.setState({
             count: this.state.count + 1,
         });
-        //AsyncStorage异步存储
+        //AsyncStorage异步存储——设置一个存储值——key：'SP-' + this.genId() + '-SP'，值：JSON.stringify(data)
         AsyncStorage.setItem('SP-' + this.genId() + '-SP', JSON.stringify(data), function (err) {
             if (err) {
                 //TODO：存储出错
                 alert(err);
-
-
             } else {
                 //alert('保存成功');
             }
         });
-
-
-
     }
-
-
     //生成随机ID：GUID 全局唯一标识符（GUID，Globally Unique Identifier）是一种由算法生成的二进制长度为128位的数字标识符
     //GUID生成的代码来自于Stoyan Stefanov
-
     genId() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
             let r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
@@ -247,16 +195,10 @@ class List extends Component {
     }
 
 
+    // 取数据
     componentDidMount() {
         let _that = this;
-
-        //AsyncStorage.clear(
-        //    function(err){
-        //
-        //    }
-        //);
-
-
+        // 获取所有本应用可以访问到的数据
         AsyncStorage.getAllKeys(
             function (err, keys) {
                 if (err) {
@@ -273,16 +215,6 @@ class List extends Component {
             }
         );
     }
-
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -316,14 +248,10 @@ class GouWu extends Component {
                 </View>
             );
         }
-
         let str = null;
         if (price) {
             str = ',共' + price.toFixed(2) + '元';
         }
-
-
-
         return (
             <ScrollView style={{ marginTop: 10 }}>
                 {list}
@@ -333,10 +261,7 @@ class GouWu extends Component {
 
             </ScrollView>
         );
-
-
     }
-
 
     componentDidMount() {
         let _that = this;
@@ -346,18 +271,19 @@ class GouWu extends Component {
                     //TODO 存储数据出错
                     //return ;
                 }
-                //keys是字符串数组
+                //keys是字符串数组，获取keys所包含的所有字段的值，调用callback回调函数时返回一个key-value数组形式的数组。返回一个Promise对象。
                 AsyncStorage.multiGet(keys, function (err, result) {
                     //得到的结构是二维数组
                     //result[i][0]表示我们存储的键   result[i][1]表示我们存储的值
                     let arr = [];
                     for (let i in result) {
+                        //把所有取到的值都放到arr数组里面
                         arr.push(JSON.parse(result[i][1]));
                     }
 
                     _that.setState(
                         {
-                            data: arr,
+                            data: arr,//将arr数组赋值给data
                         }
                     );
 
@@ -366,7 +292,7 @@ class GouWu extends Component {
             }
         );
     }
-
+    // 清空购物车
     clearStorage() {
         let _that = this;
         AsyncStorage.clear(function (err) {
@@ -446,7 +372,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     img: {
-        flex: 1,
         backgroundColor: 'transparent',
     },
     item_text: {
@@ -454,7 +379,7 @@ const styles = StyleSheet.create({
         opacity: 0.7,
         color: '#fff',
         height: 25,
-        lineHeight: 18,
+        lineHeight: 22,
         textAlign: 'center',
         marginTop: 74,
     },
