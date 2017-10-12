@@ -42,7 +42,10 @@ import TabNavigatorRN from './pages/thirdplugin/tabNavigatorRN';
 import SideMenuRN from './pages/thirdplugin/sideMenuRN';
 
 
+// API讲解
 import AsyncStorageAPI from './pages/api_demo/index';
+import BackAndroidRN from './pages/api_demo/backAndroid';
+import CameraRollAPI from './pages/api_demo/cameraRoll';
 
 // const Header = require('app/base_page/WNnews'); es5的写法
 
@@ -110,9 +113,13 @@ export default class Root extends Component {
                 {/*第三方库——侧边栏导航组件*/}
                 {/*<SideMenuRN></SideMenuRN>*/}
 
-                <AsyncStorageAPI></AsyncStorageAPI>
 
-
+                {/*api讲解*/}
+                {/*<AsyncStorageAPI></AsyncStorageAPI>*/}
+                {/*物理返回键*/}
+                {/*<BackAndroidRN></BackAndroidRN>*/}
+                {/*获取本地图片cameraRoll*/}
+                <CameraRollAPI></CameraRollAPI>
             </View>
         );
     }

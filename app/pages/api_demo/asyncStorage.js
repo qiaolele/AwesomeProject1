@@ -1,6 +1,8 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
+ * @flow
+ * @info: 购物车商品列表页面
  */
 
 import React, { Component } from 'react';
@@ -12,14 +14,18 @@ import {
     AsyncStorage,
     TouchableOpacity,
     View,
-    Button,
+    BackHandler,
+    ToastAndroid,
 } from 'react-native';
 import { StackNavigator } from "react-navigation";
 import GoShappingPage from './goShapping';
+import DatedPickerPage from './datePickerAndroid';
+import DatedTimerPage from './dateTimerAndroid';
 import Dimensions from 'Dimensions';
+import AwesomeProject1 from "../../../index.ios";
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-
+var count=2;
 const Model = [
     {
         id: '1',
@@ -86,7 +92,18 @@ class Item extends Component {
     }
 }
 class ListPage extends Component {
-
+    //组件挂载的时候调用
+    componentDidMount(){
+        BackHandler.addEventListener('hardwareBackPress',function(){
+            if(count>=1){
+                ToastAndroid.show('收到点击返回键信息...'+count,ToastAndroid.SHORT);
+                count--;
+                return true;
+            }else{
+                return false;
+            }
+        });
+    }
     static navigationOptions = ({navigation,screenProps}) => ({
         title: '详情页面',
         tabBarLabel: '详情页面',
@@ -129,6 +146,8 @@ class ListPage extends Component {
             <ScrollView style={{ marginTop: 10 }}>
                 {list}
                 <Text onPress={() => navigate('GoShapping')} style={styles.btn}>去结算{str}</Text>
+                <Text onPress={() => navigate('DatedPickerPage')} style={styles.btn}>去选选择日期</Text>
+                <Text onPress={() => navigate('DatedTimerPage')} style={styles.btn}>去选择时间</Text>
             </ScrollView>
         );
 
@@ -183,39 +202,6 @@ class ListPage extends Component {
     }
 }
 const styles = StyleSheet.create({
-    list_item: {
-        marginLeft: 5,
-        marginRight: 5,
-        padding: 5,
-        borderWidth: 1,
-        height: 30,
-        borderRadius: 3,
-        borderColor: '#ddd',
-    },
-    list_item_desc: {
-        flex: 2,
-        fontSize: 15,
-    },
-
-    list_item_price: {
-        flex: 1,
-        fontSize: 15,
-        textAlign: 'right',
-    },
-    clear: {
-        marginTop: 10,
-        backgroundColor: '#FF7200',
-        color: '#fff',
-        borderWidth: 1,
-        borderColor: '#ddd',
-        marginLeft: 20,
-        marginRight: 10,
-        lineHeight: 24,
-        height: 33,
-        fontSize: 18,
-        textAlign: 'center',
-        textAlignVertical: 'center',
-    },
     btn: {
         flex: 1,
         backgroundColor: '#FF7200',
@@ -228,8 +214,6 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         marginTop: 40,
         fontSize: 18,
-
-
     },
     row: {
         flexDirection: 'row',
@@ -255,44 +239,12 @@ const styles = StyleSheet.create({
         marginRight: 5,
         height: 100,
     },
-    list: {
-        justifyContent: 'flex-start',
-        flexDirection: 'row',
-        flexWrap: 'wrap'
-    },
-    container: {
-
-        flex: 1,
-    },
-    listView: {
-        paddingTop: 20,
-        backgroundColor: '#F5FCFF',
-    },
-    thumbnail: {
-        width: 80,
-        height: 80,
-        borderRadius: 16,
-    },
-    //让rightContainer在父容器中占据Image之外剩下的全部空间。
-
-    container1: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    title: {
-        fontSize: 14,
-        marginBottom: 8,
-
-    },
-    year: {
-        fontSize: 14,
-
-    },
 });
 //进行导航的注册
 const SimpleApp = StackNavigator({
     List: {screen: ListPage},
     GoShapping: {screen: GoShappingPage},
+    DatedPickerPage: {screen: DatedPickerPage},
+    DatedTimerPage: {screen: DatedTimerPage},
 });
 module.exports = SimpleApp;

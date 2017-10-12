@@ -1,3 +1,9 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ * @info: 购物车实例入口
+ */
 import React, {Component} from 'react';
 import {
     StyleSheet,
