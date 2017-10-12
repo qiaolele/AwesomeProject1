@@ -5,20 +5,18 @@
 
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
-    WebView,
     ScrollView,
     Image,
     AsyncStorage,
     TouchableOpacity,
     View,
+    Button,
 } from 'react-native';
-
+import { StackNavigator } from "react-navigation";
+import GoShappingPage from './goShapping';
 import Dimensions from 'Dimensions';
-
-
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -68,20 +66,18 @@ const Model = [
 
 ];
 
-
 class Item extends Component {
-    // 定义一个默认属性
+    static navigationOptions = ({navigation,screenProps}) => ({
+        title: 'welcome1',
+    });
     static defaultProps = {
         url: 'https://gss0.bdstatic.com/5eR1dDebRNRTm2_p8IuM_a/res/img/richanglogo168_24.png',
         title: '默认标题',
     };  // 注意这里有分号
-    // 定义默认属性的类型
     static propTypes = {
-        url: React.PropTypes.string.isRequired,//如果设置成isRequired的时候父组件传参或者该属性必须有值，否则报错
+        url: React.PropTypes.string.isRequired,
         title: React.PropTypes.string.isRequired,
     };  // 注意这里有分号
-
-
     render() {
         return (
             <View style={styles.item}>
@@ -99,20 +95,15 @@ class Item extends Component {
         );
     }
 }
-
-
-export default class List extends Component {
-
+class ListPage extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            count: 0,//用来表示当点击的时候计数
+            count: 0,
         };
     }
-
-
     render() {
+        const { navigate } = this.props.navigation;
         let list = [];
         for (let i in Model) {
             if (i % 2 === 0) {
@@ -125,57 +116,39 @@ export default class List extends Component {
                               press={this.press.bind(this, Model[i]) }
 
                         ></Item>
-
-
                         <Item title={Model[parseInt(i) + 1].title}
                               url={Model[parseInt(i) + 1].url}
                               press={this.press.bind(this, Model[parseInt(i) + 1]) }
                         ></Item>
-
-
                     </View>
-
-
                 );
                 list.push(row);
-
             }
-
         }
-
         let count = this.state.count;
         let str = null;
         if (count) {
             str = ',共' + count + '件商品';
         }
-
-
         return (
             <ScrollView style={{ marginTop: 10 }}>
                 {list}
-                <Text onPress={this.goGouWu.bind(this) } style={styles.btn}>去结算{str}</Text>
-
-
+                <Text onPress={() => navigate('GoShapping')} style={styles.btn}>去结算{str}</Text>
             </ScrollView>
         );
-
-
-    }
-
-
-    goGouWu() {
-        alert('点击了去购物车');
 
     }
     press(data) {
         this.setState({
             count: this.state.count + 1,
         });
-        //AsyncStorage异步存储——设置一个存储值——key：'SP-' + this.genId() + '-SP'，值：JSON.stringify(data)
+        //AsyncStorage异步存储
         AsyncStorage.setItem('SP-' + this.genId() + '-SP', JSON.stringify(data), function (err) {
             if (err) {
                 //TODO：存储出错
                 alert(err);
+
+
             } else {
                 //alert('保存成功');
             }
@@ -188,17 +161,15 @@ export default class List extends Component {
             let r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
             return v.toString(16);
         }).toUpperCase();
-
-
-
-
     }
-
-
-    // 取数据
     componentDidMount() {
         let _that = this;
-        // 获取所有本应用可以访问到的数据
+
+        //AsyncStorage.clear(
+        //    function(err){
+        //
+        //    }
+        //);
         AsyncStorage.getAllKeys(
             function (err, keys) {
                 if (err) {
@@ -216,104 +187,7 @@ export default class List extends Component {
         );
     }
 }
-
-
-class GouWu extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            price: 0,
-            data: [],
-        };
-    }
-
-    render() {
-
-        //第二次render的时候 data不为空了
-        let data = this.state.data;
-        let price = this.state.price;
-        let list = [];
-        for (let i in data) {
-            price += parseFloat(data[i].price);
-            list.push(
-                <View style={[styles.row, styles.list_item]} key={i}>
-
-                    <Text style={styles.list_item_desc}>
-                        {data[i].title}
-                        {data[i].desc}
-                    </Text>
-
-                    <Text style={styles.list_item_price}>人民币: {data[i].price}</Text>
-                </View>
-            );
-        }
-        let str = null;
-        if (price) {
-            str = ',共' + price.toFixed(2) + '元';
-        }
-        return (
-            <ScrollView style={{ marginTop: 10 }}>
-                {list}
-
-                <Text style={styles.btn}>支付{str}</Text>
-                <Text style={styles.clear} onPress={this.clearStorage.bind(this) }>清空购物车</Text>
-
-            </ScrollView>
-        );
-    }
-
-    componentDidMount() {
-        let _that = this;
-        AsyncStorage.getAllKeys(
-            function (err, keys) {
-                if (err) {
-                    //TODO 存储数据出错
-                    //return ;
-                }
-                //keys是字符串数组，获取keys所包含的所有字段的值，调用callback回调函数时返回一个key-value数组形式的数组。返回一个Promise对象。
-                AsyncStorage.multiGet(keys, function (err, result) {
-                    //得到的结构是二维数组
-                    //result[i][0]表示我们存储的键   result[i][1]表示我们存储的值
-                    let arr = [];
-                    for (let i in result) {
-                        //把所有取到的值都放到arr数组里面
-                        arr.push(JSON.parse(result[i][1]));
-                    }
-
-                    _that.setState(
-                        {
-                            data: arr,//将arr数组赋值给data
-                        }
-                    );
-
-
-                });
-            }
-        );
-    }
-    // 清空购物车
-    clearStorage() {
-        let _that = this;
-        AsyncStorage.clear(function (err) {
-            if (!err) {
-                _that.setState({
-                    data: [],
-                    price: 0,
-                });
-
-                alert('购物车已经清空');
-            }
-        });
-    }
-
-
-}
-
-
 const styles = StyleSheet.create({
-
-
     list_item: {
         marginLeft: 5,
         marginRight: 5,
@@ -323,8 +197,6 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderColor: '#ddd',
     },
-
-
     list_item_desc: {
         flex: 2,
         fontSize: 15,
@@ -335,7 +207,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'right',
     },
-
     clear: {
         marginTop: 10,
         backgroundColor: '#FF7200',
@@ -350,7 +221,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
     },
-
     btn: {
         flex: 1,
         backgroundColor: '#FF7200',
@@ -366,7 +236,6 @@ const styles = StyleSheet.create({
 
 
     },
-
     row: {
         flexDirection: 'row',
         marginBottom: 10,
@@ -408,8 +277,6 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         borderRadius: 16,
-
-
     },
     //让rightContainer在父容器中占据Image之外剩下的全部空间。
 
@@ -427,8 +294,10 @@ const styles = StyleSheet.create({
         fontSize: 14,
 
     },
-
-
-
 });
-
+//进行导航的注册
+const SimpleApp = StackNavigator({
+    List: {screen: ListPage},
+    GoShapping: {screen: GoShappingPage},
+});
+module.exports = SimpleApp;

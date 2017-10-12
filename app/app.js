@@ -4,7 +4,9 @@
  * @flow
  * @info: 程序入口
  */
-import {View,StyleSheet,Text} from 'react-native';
+import {
+    Navigator,
+    View} from 'react-native';
 import React, {Component} from 'react';
 
 // 基础实例API
@@ -40,8 +42,7 @@ import TabNavigatorRN from './pages/thirdplugin/tabNavigatorRN';
 import SideMenuRN from './pages/thirdplugin/sideMenuRN';
 
 
-
-import AsyncStorageAPI from './pages/api_demo/asyncStorage';
+import AsyncStorageAPI from './pages/api_demo/index';
 
 // const Header = require('app/base_page/WNnews'); es5的写法
 
@@ -110,6 +111,7 @@ export default class Root extends Component {
                 {/*<SideMenuRN></SideMenuRN>*/}
 
                 <AsyncStorageAPI></AsyncStorageAPI>
+
 
             </View>
         );

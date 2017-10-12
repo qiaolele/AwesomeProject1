@@ -25,5 +25,3 @@ export default class Root extends Component {
 // 注意，这里用引号括起来的'AwesomeProject1'必须和你init创建的项目名一致
 //这个是整个项目的出口文件只能有一个
 AppRegistry.registerComponent('AwesomeProject1', () => Root);
-
-AppRegistry.re
