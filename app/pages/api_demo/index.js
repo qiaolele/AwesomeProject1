@@ -4,12 +4,12 @@ import {
     Image,
 } from 'react-native';
 import { TabNavigator } from "react-navigation";
-
 import AsyncStorage from './asyncStorage';
-import GoShapping from './goShapping';
-
+// import GoShapping from './goShapping';
+import Detail from './detail';
 
 const mainPage = TabNavigator({
+
     AsyncStorage: {
         screen: AsyncStorage,
         navigationOptions: {
@@ -29,12 +29,12 @@ const mainPage = TabNavigator({
             }
         }
     },
-    GoShapping: {
-        screen: GoShapping,
+    Detail: {
+        screen: Detail,
         //以下参数也可放置在MinePage.js页面
         navigationOptions: {
-            title: '我的',
-            tabBarLabel: '我的',
+            title: '详情',
+            tabBarLabel: '详情',
             tabBarIcon: ({ tintColor }) => (
                 <Image
                     source={

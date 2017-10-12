@@ -67,17 +67,7 @@ const Model = [
 ];
 
 class Item extends Component {
-    static navigationOptions = ({navigation,screenProps}) => ({
-        title: 'welcome1',
-    });
-    static defaultProps = {
-        url: 'https://gss0.bdstatic.com/5eR1dDebRNRTm2_p8IuM_a/res/img/richanglogo168_24.png',
-        title: '默认标题',
-    };  // 注意这里有分号
-    static propTypes = {
-        url: React.PropTypes.string.isRequired,
-        title: React.PropTypes.string.isRequired,
-    };  // 注意这里有分号
+
     render() {
         return (
             <View style={styles.item}>
@@ -96,6 +86,11 @@ class Item extends Component {
     }
 }
 class ListPage extends Component {
+
+    static navigationOptions = ({navigation,screenProps}) => ({
+        title: '详情页面',
+        tabBarLabel: '详情页面',
+    });
     constructor(props) {
         super(props);
         this.state = {

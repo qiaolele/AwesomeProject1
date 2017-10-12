@@ -16,7 +16,7 @@ class GoShappingPage extends Component {
         };
     }
     static navigationOptions = ({navigation,screenProps}) => ({
-        title: 'welcome',
+        title: '购物',
     });
 
     render() {
